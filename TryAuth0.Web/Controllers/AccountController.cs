@@ -37,19 +37,19 @@ public class AccountController : Controller
     {
         // Inside one of your controller actions
 
-        if (User.Identity.IsAuthenticated)
+        if (User.Identity!.IsAuthenticated)
         {
-            string accessToken = await HttpContext.GetTokenAsync("access_token");
+            string? accessToken = await HttpContext.GetTokenAsync("access_token");
             
             // if you need to check the Access Token expiration time, use this value
             // provided on the authorization response and stored.
             // do not attempt to inspect/decode the access token
             DateTime accessTokenExpiresAt = DateTime.Parse(
-                await HttpContext.GetTokenAsync("expires_at"), 
+                await HttpContext.GetTokenAsync("expires_at") ?? DateTime.MaxValue.ToString("o"), 
                 CultureInfo.InvariantCulture,
                 DateTimeStyles.RoundtripKind);
                 
-            string idToken = await HttpContext.GetTokenAsync("id_token");
+            string? idToken = await HttpContext.GetTokenAsync("id_token");
 
             // Now you can use them. For more info on when and how to use the
             // Access Token and ID Token, see https://auth0.com/docs/tokens
