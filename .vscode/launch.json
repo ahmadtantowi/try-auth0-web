@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/TryAuth0.Web/bin/Debug/net6.0/TryAuth0.Web.dll",
+            "program": "${workspaceFolder}/${input:pickApp}/bin/Debug/net6.0/${input:pickApp}.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/TryAuth0.Web",
+            "cwd": "${workspaceFolder}/${input:pickApp}",
             "stopAtEntry": false,
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
@@ -25,6 +25,21 @@
             "name": ".NET Core Attach",
             "type": "coreclr",
             "request": "attach"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "pickApp",
+            "type": "command",
+            "command": "extension.commandvariable.pickStringRemember",
+            "args": {
+                "key": "webapp",
+                "description": "Which app do you want to debug?",
+                "options": [
+                    "TryAuth0.Api",
+                    "TryAuth0.Web"
+                ]
+            }
         }
     ]
 }

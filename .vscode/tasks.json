@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/TryAuth0.Web/TryAuth0.Web.csproj",
+                "${workspaceFolder}/${input:webapp}/${input:webapp}.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/TryAuth0.Web/TryAuth0.Web.csproj",
+                "${workspaceFolder}/${input:webapp}/${input:webapp}.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,9 +33,19 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/TryAuth0.Web/TryAuth0.Web.csproj"
+                "${workspaceFolder}/${input:webapp}/${input:webapp}.csproj"
             ],
             "problemMatcher": "$msCompile"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "webapp",
+            "type": "command",
+            "command": "extension.commandvariable.remember",
+            "args": {
+                "key": "webapp"
+            }
         }
     ]
 }

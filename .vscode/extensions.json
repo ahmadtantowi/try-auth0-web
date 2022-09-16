@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "ms-dotnettools.csharp",
+        "tintoy.msbuild-project-tools",
+        "rioj7.command-variable"
+    ]
+}

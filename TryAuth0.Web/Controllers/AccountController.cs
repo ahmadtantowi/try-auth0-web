@@ -51,6 +51,10 @@ public class AccountController : Controller
                 
             string? idToken = await HttpContext.GetTokenAsync("id_token");
 
+            _logger.LogDebug("IdToken: {0}", idToken);
+            _logger.LogDebug("AccessToken: {0}", accessToken);
+            _logger.LogDebug("Expire: {0}", accessTokenExpiresAt);
+
             // Now you can use them. For more info on when and how to use the
             // Access Token and ID Token, see https://auth0.com/docs/tokens
 
